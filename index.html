@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lives In Motion AI Receptionist</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f5f7fa;
+    color:#333;
+}
+
+.hero{
+    background:#0f4c81;
+    color:white;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    max-width:700px;
+    margin:auto;
+}
+
+.btn{
+    display:inline-block;
+    background:#2ecc71;
+    color:white;
+    padding:15px 25px;
+    text-decoration:none;
+    border-radius:8px;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+.section{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.demo-box{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    background:#0f4c81;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+#chat{
+    border:1px solid #ddd;
+    min-height:200px;
+    padding:15px;
+    margin-bottom:10px;
+    background:#fafafa;
+    overflow-y:auto;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <h1>Lives In Motion AI Receptionist</h1>
+
+    <p>
+        24/7 AI-powered enquiry assistant for Care Homes,
+        Retirement Villages and Home Care Providers.
+    </p>
+
+    <a href="#contact" class="btn">
+        Book a Free Demo
+    </a>
+</section>
+
+<section class="section">
+    <h2>How It Works</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Instant Responses</h3>
+            <p>
+                Families get answers immediately,
+                even outside office hours.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Lead Capture</h3>
+            <p>
+                Collect visitor details automatically.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>More Tours</h3>
+            <p>
+                Convert website visitors into booked tours.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>Live Demo</h2>
+
+    <div class="demo-box">
+
+        <div id="chat">
+            <p><strong>AI:</strong> Hello, how can I help you today?</p>
+        </div>
+
+        <input
+            type="text"
+            id="message"
+            placeholder="Ask a question..."
+        >
+
+        <button onclick="demoChat()">
+            Send
+        </button>
+
+    </div>
+</section>
+
+<section class="section" id="contact">
+
+    <h2>Request Information</h2>
+
+    <form
+      action="https://formsubmit.co/YOUR_EMAIL@example.com"
+      method="POST">
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required>
+
+        <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number">
+
+        <textarea
+            name="message"
+            rows="5"
+            placeholder="Tell us about your organisation">
+        </textarea>
+
+        <button type="submit">
+            Request Demo
+        </button>
+
+    </form>
+
+</section>
+
+<footer class="footer">
+    <p>
+        © 2026 Lives In Motion
+    </p>
+</footer>
+
+<script>
+
+function demoChat(){
+
+    const input =
+        document.getElementById("message");
+
+    const chat =
+        document.getElementById("chat");
+
+    const userMessage =
+        input.value.trim();
+
+    if(!userMessage) return;
+
+    chat.innerHTML +=
+        `<p><strong>You:</strong> ${userMessage}</p>`;
+
+    let reply =
+        "Thank you for your enquiry. Our AI Receptionist can answer questions, capture leads and help book appointments 24/7.";
+
+    if(userMessage.toLowerCase().includes("price")){
+        reply =
+        "Our service starts from £299 per month.";
+    }
+
+    if(userMessage.toLowerCase().includes("demo")){
+        reply =
+        "We would be delighted to arrange a free demonstration.";
+    }
+
+    if(userMessage.toLowerCase().includes("care")){
+        reply =
+        "The platform is designed specifically for care homes, retirement villages and home care providers.";
+    }
+
+    setTimeout(() => {
+
+        chat.innerHTML +=
+        `<p><strong>AI:</strong> ${reply}</p>`;
+
+        chat.scrollTop =
+            chat.scrollHeight;
+
+    },500);
+
+    input.value="";
+}
+
+</script>
+
+</body>
+</html>
