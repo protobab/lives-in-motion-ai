@@ -1,129 +1,396 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lives In Motion AI Receptionist</title>
+
 <meta name="description" content="AI-powered reception and enquiry management for care homes, healthcare providers and community organisations.">
+
 <link rel="icon" href="logo.png">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fa;color:#333;line-height:1.6}
-header{background:#fff;position:sticky;top:0;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:100}
-.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{display:flex;align-items:center;gap:12px}
-.logo img{height:60px}
-nav a{text-decoration:none;color:#333;margin-left:20px;font-weight:bold}
-.hero{background:linear-gradient(135deg,#0f4c81,#2f7fbf);color:#fff;text-align:center;padding:90px 20px}
-.hero img{width:120px;margin-bottom:20px}
-.hero h1{font-size:3rem;margin-bottom:20px}
-.hero p{max-width:850px;margin:auto;font-size:1.15rem}
-.btn{display:inline-block;margin-top:25px;padding:15px 30px;background:#2ecc71;color:#fff;text-decoration:none;border-radius:8px;font-weight:bold}
-.section{max-width:1200px;margin:auto;padding:70px 20px}
-.section h2{text-align:center;color:#0f4c81;margin-bottom:35px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card,.panel{background:#fff;padding:25px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
-#chat{height:280px;overflow-y:auto;border:1px solid #ddd;background:#fafafa;padding:15px;margin-bottom:10px}
-input,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:6px;margin-bottom:10px}
-button{background:#0f4c81;color:#fff;border:none;padding:12px 20px;border-radius:6px;cursor:pointer}
-footer{background:#1f1f1f;color:#fff;text-align:center;padding:40px 20px}
-footer img{width:90px;margin-bottom:10px}
-@media(max-width:768px){.nav{flex-direction:column}.hero h1{font-size:2rem}nav{margin-top:10px}}
+
+:root{
+--primary:#0f4c81;
+--secondary:#2f7fbf;
+--accent:#2ecc71;
+--light:#f7f9fb;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:var(--light);
+color:#333;
+line-height:1.6;
+}
+
+header{
+background:#fff;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.nav{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo img{
+height:60px;
+}
+
+nav a{
+text-decoration:none;
+color:#333;
+margin-left:20px;
+font-weight:bold;
+}
+
+.hero{
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+.hero img{
+width:130px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:850px;
+margin:auto;
+font-size:1.2rem;
+}
+
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:15px 30px;
+background:var(--accent);
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+}
+
+.section{
+max-width:1200px;
+margin:auto;
+padding:70px 20px;
+}
+
+.section h2{
+text-align:center;
+color:var(--primary);
+margin-bottom:40px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.card h3{
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.chatbox{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+#chat{
+height:300px;
+overflow-y:auto;
+border:1px solid #ddd;
+padding:15px;
+margin-bottom:10px;
+background:#fafafa;
+}
+
+input,
+textarea{
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+background:var(--primary);
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+footer{
+background:#1f1f1f;
+color:white;
+text-align:center;
+padding:50px 20px;
+}
+
+footer img{
+width:90px;
+margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:2rem;
+}
+
+.nav{
+flex-direction:column;
+}
+
+nav{
+margin-top:10px;
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
 
 <header>
+
 <div class="nav">
+
 <div class="logo">
-<img src="logo.png" alt="Lives In Motion Logo">
+<img src="logo.png" alt="Lives In Motion">
 <strong>Lives In Motion</strong>
 </div>
+
 <nav>
 <a href="#solutions">Solutions</a>
 <a href="#about">About</a>
 <a href="#demo">Demo</a>
 <a href="#contact">Contact</a>
 </nav>
+
 </div>
+
 </header>
 
 <section class="hero">
+
 <img src="logo.png" alt="Lives In Motion">
-<h1>AI Receptionist for Care & Community Organisations</h1>
-<p>24/7 AI-powered enquiry management designed for care homes, retirement communities, healthcare providers and organisations serving diverse communities.</p>
-<a href="#contact" class="btn">Request a Free Demo</a>
+
+<h1>Never Miss Another Enquiry</h1>
+
+<p>
+
+AI-powered receptionists for care providers,
+healthcare organisations and community services.
+
+Built by Lives In Motion — combining community engagement,
+healthcare support and intelligent communication technologies.
+
+</p>
+
+<a href="#contact" class="btn">
+Request a Free Demo
+</a>
+
+</section>
+
+<section class="section">
+
+<h2>Why Lives In Motion?</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Community Radio</h3>
+<p>Trusted community communication channels.</p>
+</div>
+
+<div class="card">
+<h3>Diaspora Network</h3>
+<p>Connecting people and communities across the UK.</p>
+</div>
+
+<div class="card">
+<h3>Healthcare Navigation</h3>
+<p>Helping people access information and support.</p>
+</div>
+
+<div class="card">
+<h3>AI Solutions</h3>
+<p>Modern tools that improve engagement and responsiveness.</p>
+</div>
+
+</div>
+
 </section>
 
 <section class="section" id="solutions">
-<h2>How We Help</h2>
-<div class="cards">
-<div class="card"><h3>24/7 Responses</h3><p>Answer enquiries instantly, even outside office hours.</p></div>
-<div class="card"><h3>Lead Capture</h3><p>Collect visitor details and enquiry information automatically.</p></div>
-<div class="card"><h3>Reduce Staff Workload</h3><p>Allow staff to focus on people, not repetitive enquiries.</p></div>
-<div class="card"><h3>Community Engagement</h3><p>Improve communication with families, residents and stakeholders.</p></div>
-</div>
-</section>
 
-<section class="section" id="about">
-<h2>About Lives In Motion</h2>
-<div class="panel">
-<p>Lives In Motion develops communication, healthcare and community-focused digital services. Our ecosystem includes community media, diaspora engagement initiatives, healthcare navigation services and AI-powered solutions that help organisations connect with the people they serve.</p>
+<h2>Solutions</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>24/7 Responses</h3>
+<p>Never miss an enquiry again.</p>
 </div>
+
+<div class="card">
+<h3>Lead Capture</h3>
+<p>Automatically collect visitor information.</p>
+</div>
+
+<div class="card">
+<h3>Reduced Workload</h3>
+<p>Allow staff to focus on people.</p>
+</div>
+
+<div class="card">
+<h3>Community Engagement</h3>
+<p>Improve communication with families and stakeholders.</p>
+</div>
+
+</div>
+
 </section>
 
 <section class="section" id="demo">
-<h2>Interactive Demo</h2>
-<div class="panel">
+
+<h2>AI Demonstration</h2>
+
+<div class="chatbox">
+
 <div id="chat">
-<p><strong>AI:</strong> Hello, I'm the Lives In Motion AI Receptionist. How can I help today?</p>
+
+<p><strong>AI:</strong> Hello, how can I help today?</p>
+
 </div>
-<input id="message" placeholder="Ask about pricing, care services, tours or availability...">
-<button onclick="demoChat()">Send Message</button>
+
+<input id="message" placeholder="Ask a question...">
+
+<button onclick="demoChat()">
+Send
+</button>
+
 </div>
+
 </section>
 
 <section class="section" id="contact">
+
 <h2>Request Information</h2>
-<div class="panel">
+
 <form action="https://formsubmit.co/hello@livesinmotion.co.uk" method="POST">
+
 <input type="hidden" name="_subject" value="Lives In Motion Demo Request">
+
 <input type="hidden" name="_captcha" value="false">
-<input type="text" name="Name" placeholder="Your Name" required>
-<input type="email" name="Email" placeholder="Your Email" required>
-<input type="text" name="Organisation" placeholder="Organisation Name">
-<input type="tel" name="Phone" placeholder="Phone Number">
-<textarea name="Message" rows="5" placeholder="Tell us about your organisation"></textarea>
-<button type="submit">Request Free Demo</button>
+
+<input type="text" name="Name" placeholder="Name" required>
+
+<input type="email" name="Email" placeholder="Email" required>
+
+<input type="text" name="Organisation" placeholder="Organisation">
+
+<textarea name="Message" rows="5" placeholder="How can we help?"></textarea>
+
+<button type="submit">
+Request Demo
+</button>
+
 </form>
-</div>
+
 </section>
 
 <footer>
+
 <img src="logo.png" alt="Lives In Motion">
-<h3>Lives In Motion</h3>
-<p>Connecting Communities. Supporting Wellbeing. Enabling Better Care.</p>
+
+<p>
+
+Connecting Communities.
+Supporting Wellbeing.
+Enabling Better Care.
+
+</p>
+
 </footer>
 
 <script>
+
 function demoChat(){
- const input=document.getElementById('message');
- const chat=document.getElementById('chat');
- const text=input.value.trim();
- if(!text) return;
- chat.innerHTML += `<p><strong>You:</strong> ${text}</p>`;
- let reply="Thank you for your enquiry. Our AI Receptionist helps organisations respond faster and capture more enquiries.";
- const t=text.toLowerCase();
- if(t.includes('price')||t.includes('cost')) reply="Pricing starts from £299 per month depending on requirements.";
- if(t.includes('care')) reply="The solution is designed for care homes, healthcare providers and community organisations.";
- if(t.includes('demo')) reply="We would be delighted to arrange a personalised demonstration.";
- if(t.includes('visit')||t.includes('tour')) reply="The AI can help automate tour and visit enquiries.";
- setTimeout(()=>{
-   chat.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
-   chat.scrollTop = chat.scrollHeight;
- },500);
- input.value='';
+
+const input =
+document.getElementById('message');
+
+const chat =
+document.getElementById('chat');
+
+const text =
+input.value.trim();
+
+if(!text) return;
+
+chat.innerHTML +=
+'<p><strong>You:</strong> '+text+'</p>';
+
+chat.innerHTML +=
+'<p><strong>AI:</strong> Thank you for your enquiry. A live AI assistant will be connected in the next version.</p>';
+
+input.value='';
+
+chat.scrollTop =
+chat.scrollHeight;
+
 }
+
 </script>
 
 </body>
