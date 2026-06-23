@@ -2,104 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Lives In Motion AI Receptionist</title>
 
 <style>
 body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    background:#f5f7fa;
-    color:#333;
+font-family:Arial,sans-serif;
+margin:0;
+background:#f7f9fb;
+color:#333;
 }
 
 .hero{
-    background:#0f4c81;
-    color:white;
-    padding:80px 20px;
-    text-align:center;
+background:linear-gradient(135deg,#0f4c81,#2f7fbf);
+color:white;
+padding:80px 20px;
+text-align:center;
 }
 
 .hero h1{
-    font-size:3rem;
-    margin-bottom:10px;
+font-size:3rem;
+margin-bottom:10px;
 }
 
-.hero p{
-    font-size:1.2rem;
-    max-width:700px;
-    margin:auto;
-}
-
-.btn{
-    display:inline-block;
-    background:#2ecc71;
-    color:white;
-    padding:15px 25px;
-    text-decoration:none;
-    border-radius:8px;
-    margin-top:20px;
-    font-weight:bold;
-}
-
-.section{
-    max-width:1000px;
-    margin:auto;
-    padding:60px 20px;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
 }
 
 .card{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-.demo-box{
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-input, textarea{
-    width:100%;
-    padding:12px;
-    margin-bottom:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-}
-
-button{
-    background:#0f4c81;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-.footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:30px;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
 #chat{
-    border:1px solid #ddd;
-    min-height:200px;
-    padding:15px;
-    margin-bottom:10px;
-    background:#fafafa;
-    overflow-y:auto;
+height:400px;
+overflow-y:auto;
+border:1px solid #ddd;
+padding:15px;
+margin-bottom:10px;
+background:white;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#0f4c81;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.msg{
+margin-bottom:12px;
+}
+
+.user{
+font-weight:bold;
+}
+
+.ai{
+color:#0f4c81;
 }
 </style>
 </head>
@@ -107,162 +82,108 @@ button{
 <body>
 
 <section class="hero">
-    <h1>Lives In Motion AI Receptionist</h1>
+<h1>Lives In Motion AI Receptionist</h1>
 
-    <p>
-        24/7 AI-powered enquiry assistant for Care Homes,
-        Retirement Villages and Home Care Providers.
-    </p>
-
-    <a href="#contact" class="btn">
-        Book a Free Demo
-    </a>
+<p>
+24/7 intelligent enquiry support for care homes,
+retirement communities and home care providers.
+</p>
 </section>
 
-<section class="section">
-    <h2>How It Works</h2>
+<div class="container">
 
-    <div class="cards">
+<div class="card">
 
-        <div class="card">
-            <h3>Instant Responses</h3>
-            <p>
-                Families get answers immediately,
-                even outside office hours.
-            </p>
-        </div>
+<h2>Live Demonstration</h2>
 
-        <div class="card">
-            <h3>Lead Capture</h3>
-            <p>
-                Collect visitor details automatically.
-            </p>
-        </div>
+<div id="chat">
+<div class="msg ai">
+Hello. How can I help you today?
+</div>
+</div>
 
-        <div class="card">
-            <h3>More Tours</h3>
-            <p>
-                Convert website visitors into booked tours.
-            </p>
-        </div>
+<input
+id="message"
+placeholder="Ask a question about care services..."
+>
 
-    </div>
-</section>
+<button onclick="sendMessage()">
+Send
+</button>
 
-<section class="section">
-    <h2>Live Demo</h2>
+</div>
 
-    <div class="demo-box">
-
-        <div id="chat">
-            <p><strong>AI:</strong> Hello, how can I help you today?</p>
-        </div>
-
-        <input
-            type="text"
-            id="message"
-            placeholder="Ask a question..."
-        >
-
-        <button onclick="demoChat()">
-            Send
-        </button>
-
-    </div>
-</section>
-
-<section class="section" id="contact">
-
-    <h2>Request Information</h2>
-
-    <form
-      action="https://formsubmit.co/YOUR_EMAIL@example.com"
-      method="POST">
-
-        <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required>
-
-        <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required>
-
-        <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number">
-
-        <textarea
-            name="message"
-            rows="5"
-            placeholder="Tell us about your organisation">
-        </textarea>
-
-        <button type="submit">
-            Request Demo
-        </button>
-
-    </form>
-
-</section>
-
-<footer class="footer">
-    <p>
-        © 2026 Lives In Motion
-    </p>
-</footer>
+</div>
 
 <script>
 
-function demoChat(){
+let leadCaptured = false;
 
-    const input =
-        document.getElementById("message");
+async function sendMessage(){
 
-    const chat =
-        document.getElementById("chat");
+const input =
+document.getElementById("message");
 
-    const userMessage =
-        input.value.trim();
+const chat =
+document.getElementById("chat");
 
-    if(!userMessage) return;
+const text =
+input.value.trim();
 
-    chat.innerHTML +=
-        `<p><strong>You:</strong> ${userMessage}</p>`;
+if(!text) return;
 
-    let reply =
-        "Thank you for your enquiry. Our AI Receptionist can answer questions, capture leads and help book appointments 24/7.";
+chat.innerHTML +=
+`<div class="msg user">You: ${text}</div>`;
 
-    if(userMessage.toLowerCase().includes("price")){
-        reply =
-        "Our service starts from £299 per month.";
-    }
+input.value="";
 
-    if(userMessage.toLowerCase().includes("demo")){
-        reply =
-        "We would be delighted to arrange a free demonstration.";
-    }
+const response =
+await fetch("/api/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:text
+})
+});
 
-    if(userMessage.toLowerCase().includes("care")){
-        reply =
-        "The platform is designed specifically for care homes, retirement villages and home care providers.";
-    }
+const data =
+await response.json();
 
-    setTimeout(() => {
+chat.innerHTML +=
+`<div class="msg ai">AI: ${data.reply}</div>`;
 
-        chat.innerHTML +=
-        `<p><strong>AI:</strong> ${reply}</p>`;
+chat.scrollTop =
+chat.scrollHeight;
 
-        chat.scrollTop =
-            chat.scrollHeight;
+if(
+!leadCaptured &&
+(
+text.toLowerCase().includes("price") ||
+text.toLowerCase().includes("visit") ||
+text.toLowerCase().includes("availability")
+)
+){
 
-    },500);
+leadCaptured = true;
 
-    input.value="";
+setTimeout(()=>{
+
+chat.innerHTML += `
+<div class="msg ai">
+To help further, please provide:
+<br><br>
+Name<br>
+Email<br>
+Phone Number
+</div>
+`;
+
+},1000);
+
+}
+
 }
 
 </script>
