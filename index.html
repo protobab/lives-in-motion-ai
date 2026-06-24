@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lives In Motion AI — Intelligent Receptionists for Care Providers</title>
+<meta name="description" content="AI-powered receptionists for care homes, GP surgeries and community services. Always available, always professional, always on brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0D6B6E;--teal2:#12898D;--teal3:#084F52;
+  --gold:#D4A832;--gold2:#E8C255;
+  --green:#1A5C2E;--green2:#22803D;
+  --bg:#06101A;--s1:#091520;--s2:#0D1E2C;
+  --w:#fff;--m:rgba(255,255,255,.55);--d:rgba(255,255,255,.25);
+  --br:rgba(255,255,255,.07);--bt:rgba(13,107,110,.25);
+  --fh:'Syne',sans-serif;--fb:'Inter',sans-serif;
+  --mx:1080px;--ease:cubic-bezier(.25,.46,.45,.94);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--w);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.w{max-width:var(--mx);margin:0 auto;padding:0 1.25rem}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,16,26,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--br)}
+.ni{display:flex;align-items:center;justify-content:space-between;height:54px;max-width:var(--mx);margin:0 auto;padding:0 1.25rem}
+.nb{display:flex;align-items:center;gap:.6rem}
+.nm{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--teal2));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:.7rem;font-weight:800;color:var(--gold)}
+.nn{font-family:var(--fh);font-size:.9rem;font-weight:700;color:var(--w)}
+.ns{font-size:.5rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:block;margin-top:-2px}
+.nr{display:flex;align-items:center;gap:.85rem}
+.nl{font-size:.72rem;color:var(--m);transition:color .2s}
+.nl:hover{color:var(--gold)}
+.ncta{background:var(--teal);color:var(--w);font-family:var(--fh);font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.38rem .9rem;border-radius:4px;border:none;cursor:pointer;transition:all .2s}
+.ncta:hover{background:var(--teal2);transform:translateY(-1px)}
+.hb{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:3px}
+.hb span{display:block;width:18px;height:1.5px;background:var(--w)}
+
+/* HERO */
+#hero{min-height:92vh;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:5rem 0 4rem;position:relative;overflow:hidden}
+.ho{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.ho1{width:600px;height:600px;background:radial-gradient(var(--teal),transparent);top:-20%;right:-10%;opacity:.13}
+.ho2{width:400px;height:400px;background:radial-gradient(var(--gold),transparent);bottom:-10%;left:-5%;opacity:.08}
+.hgrid{background:linear-gradient(rgba(13,107,110,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(13,107,110,.03) 1px,transparent 1px);background-size:32px 32px;position:absolute;inset:0;pointer-events:none}
+.hleft{position:relative;z-index:1}
+.htag{display:inline-flex;align-items:center;gap:.4rem;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,168,50,.2);padding:.25rem .7rem;border-radius:20px;margin-bottom:1.25rem}
+.tdot{width:4px;height:4px;border-radius:50%;background:var(--gold);animation:ld 2s ease-in-out infinite}
+@keyframes ld{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:var(--fh);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:800;line-height:1.05;margin-bottom:1.1rem}
+h1 .t{color:var(--teal2)} h1 .g{color:var(--gold)}
+.hs{font-size:.92rem;line-height:1.85;color:var(--m);max-width:440px;margin-bottom:2rem;font-weight:300}
+.hbtns{display:flex;gap:.65rem;flex-wrap:wrap}
+.btn-teal{display:inline-flex;align-items:center;gap:.4rem;background:var(--teal);color:var(--w);font-family:var(--fh);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.65rem 1.5rem;border-radius:4px;border:none;cursor:pointer;transition:all .25s;box-shadow:0 4px 18px rgba(13,107,110,.3)}
+.btn-teal:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 8px 26px rgba(13,107,110,.45)}
+.btn-out{display:inline-flex;align-items:center;gap:.4rem;color:var(--m);font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.65rem 1.5rem;border-radius:4px;border:1px solid var(--br);transition:all .25s}
+.btn-out:hover{border-color:var(--gold);color:var(--gold)}
+/* Hero right — demo panel */
+.hright{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.demo-frame{background:var(--s1);border:1px solid var(--bt);border-radius:12px;overflow:hidden;width:100%;max-width:420px;box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.df-top{background:linear-gradient(135deg,var(--teal3),var(--s1));padding:.75rem 1rem;display:flex;align-items:center;gap:.65rem;border-bottom:1px solid var(--br)}
+.df-status{display:flex;align-items:center;gap:.35rem;font-size:.6rem;color:rgba(255,255,255,.5);letter-spacing:.06em;margin-left:auto}
+.df-dot{width:6px;height:6px;border-radius:50%;background:#6FCF8A;animation:ld 1.5s ease-in-out infinite}
+
+/* HOLOGRAM FIGURE */
+.holo-wrap{padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;background:linear-gradient(180deg,rgba(13,107,110,.06),transparent)}
+.holo-fig{position:relative;width:100px;height:120px}
+.holo-fig svg{filter:drop-shadow(0 0 16px rgba(13,107,110,.9)) drop-shadow(0 0 32px rgba(13,107,110,.4));animation:hf 6s ease-in-out infinite}
+@keyframes hf{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.holo-fig.speaking svg{animation:hft .4s ease-in-out infinite alternate,hf 6s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(212,168,50,.9)) drop-shadow(0 0 40px rgba(212,168,50,.5))}
+@keyframes hft{from{transform:translateY(-4px) scale(1.02)}to{transform:translateY(-8px) scale(1.04)}}
+.holo-fig.listening svg{filter:drop-shadow(0 0 24px rgba(13,107,110,1)) drop-shadow(0 0 48px rgba(13,107,110,.7));animation:hfl 1s ease-in-out infinite,hf 6s ease-in-out infinite}
+@keyframes hfl{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.scan-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(13,107,110,.8),rgba(212,168,50,.4),rgba(13,107,110,.8),transparent);animation:scan 3s linear infinite;opacity:.5;pointer-events:none}
+@keyframes scan{0%{top:0;opacity:0}5%{opacity:.5}95%{opacity:.5}100%{top:100%;opacity:0}}
+.holo-ring{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(13,107,110,.25);animation:hr 2.5s ease-out infinite}
+.holo-ring:nth-child(2){inset:-16px;animation-delay:.5s;border-color:rgba(13,107,110,.15)}
+@keyframes hr{0%{opacity:.8;transform:scale(.96)}100%{opacity:0;transform:scale(1.08)}}
+.holo-base{width:80px;height:6px;border-radius:50%;background:radial-gradient(ellipse,rgba(13,107,110,.6),transparent 70%);animation:hb2 2s ease-in-out infinite alternate;align-self:center}
+@keyframes hb2{from{opacity:.5}to{opacity:1}}
+.rec-name{font-family:var(--fh);font-size:.95rem;font-weight:700;color:var(--w)}
+.rec-org{font-size:.62rem;color:var(--m);letter-spacing:.04em}
+.rec-status{display:flex;align-items:center;gap:.35rem;font-size:.6rem;color:var(--teal2);letter-spacing:.06em}
+.rs-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:ld 2s ease-in-out infinite}
+
+/* Voice bars */
+.vbars{display:flex;align-items:center;gap:2px;height:18px}
+.vb{width:2px;border-radius:2px;background:var(--teal2);animation:vbi 2.5s ease-in-out infinite}
+.vb:nth-child(1){height:4px;animation-delay:0s}.vb:nth-child(2){height:8px;animation-delay:.15s}.vb:nth-child(3){height:13px;animation-delay:.3s;background:var(--gold)}.vb:nth-child(4){height:8px;animation-delay:.15s}.vb:nth-child(5){height:4px;animation-delay:0s}
+@keyframes vbi{0%,100%{transform:scaleY(.5);opacity:.4}50%{transform:scaleY(1.3);opacity:.9}}
+.vbars.speaking .vb{animation:vbs .35s ease-in-out infinite}
+.vbars.speaking .vb:nth-child(1){animation-delay:0s}.vbars.speaking .vb:nth-child(2){animation-delay:.06s}.vbars.speaking .vb:nth-child(3){animation-delay:.12s}.vbars.speaking .vb:nth-child(4){animation-delay:.06s}.vbars.speaking .vb:nth-child(5){animation-delay:0s}
+@keyframes vbs{0%,100%{height:3px}.50%{height:16px}}
+.vbars.listening .vb{background:#6FCF8A;animation:vbl .5s ease-in-out infinite alternate}
+@keyframes vbl{from{transform:scaleY(.8)}to{transform:scaleY(1.6)}}
+
+/* Chat area */
+.chat-area{padding:.75rem;display:flex;flex-direction:column;gap:.5rem;max-height:200px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(13,107,110,.3) transparent}
+.msg{display:flex;gap:.4rem;animation:mi .3s ease both}
+@keyframes mi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.rec{align-items:flex-start}
+.msg.usr{flex-direction:row-reverse}
+.mav{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700}
+.msg.rec .mav{background:linear-gradient(135deg,var(--teal3),var(--teal));color:var(--gold)}
+.msg.usr .mav{background:rgba(255,255,255,.08);color:var(--d);font-size:.52rem}
+.mb{max-width:86%;padding:.5rem .7rem;border-radius:8px;font-size:.72rem;line-height:1.6;font-weight:300}
+.msg.rec .mb{background:rgba(13,107,110,.18);border:1px solid rgba(13,107,110,.28);color:rgba(255,255,255,.88);border-radius:3px 8px 8px 8px}
+.msg.usr .mb{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75);border-radius:8px 3px 8px 8px}
+.typing{display:none;align-items:center;gap:.4rem;padding:.25rem .75rem}
+.typing.active{display:flex}
+.tdots{display:flex;gap:3px;padding:.45rem .65rem;background:rgba(13,107,110,.18);border:1px solid rgba(13,107,110,.28);border-radius:3px 8px 8px 8px}
+.td{width:4px;height:4px;border-radius:50%;background:var(--teal2);animation:td 1.2s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+@keyframes td{0%,80%,100%{transform:scale(.5);opacity:.3}40%{transform:scale(1);opacity:1}}
+/* Input */
+.df-input{display:flex;gap:.4rem;padding:.65rem .75rem;border-top:1px solid var(--br)}
+.di{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(13,107,110,.25);border-radius:6px;padding:.45rem .65rem;color:var(--w);font-family:var(--fb);font-size:.72rem;font-weight:300;outline:none;transition:border-color .2s}
+.di::placeholder{color:var(--d)}
+.di:focus{border-color:rgba(13,107,110,.6)}
+.mic-btn{width:30px;height:30px;border-radius:6px;background:rgba(13,107,110,.25);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.mic-btn:hover{background:rgba(13,107,110,.5)}
+.mic-btn.listening{background:var(--teal);animation:mp 1s ease-in-out infinite}
+@keyframes mp{0%,100%{box-shadow:0 0 0 0 rgba(13,107,110,.5)}50%{box-shadow:0 0 0 6px rgba(13,107,110,0)}}
+.send-btn{width:30px;height:30px;border-radius:6px;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.send-btn:hover{background:var(--teal2);transform:scale(1.05)}
+.send-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* Customiser */
+.customiser{padding:.65rem .85rem;border-top:1px solid var(--br);background:rgba(212,168,50,.04)}
+.cust-label{font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.cust-row{display:flex;gap:.4rem;flex-wrap:wrap}
+.ci{background:rgba(255,255,255,.04);border:1px solid var(--br);border-radius:4px;padding:.32rem .55rem;color:var(--w);font-family:var(--fb);font-size:.65rem;outline:none;transition:border-color .2s;flex:1;min-width:100px}
+.ci::placeholder{color:var(--d)}
+.ci:focus{border-color:rgba(212,168,50,.4)}
+.cust-btn{background:rgba(212,168,50,.15);border:1px solid rgba(212,168,50,.25);color:var(--gold);font-family:var(--fh);font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.32rem .7rem;border-radius:4px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.cust-btn:hover{background:rgba(212,168,50,.28)}
+
+/* SECTIONS */
+section{padding:4rem 0}
+.sl{font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;margin-bottom:.45rem}
+.sl::before{content:'';display:block;width:14px;height:1.5px}
+.slt{color:var(--teal2)}.slt::before{background:var(--teal)}
+.slg{color:var(--gold2)}.slg::before{background:var(--gold)}
+.slgr{color:#6FCF8A}.slgr::before{background:var(--green2)}
+h2{font-family:var(--fh);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:800;color:var(--w);line-height:1.15;margin-bottom:.5rem}
+
+/* HOW IT WORKS */
+#how{background:var(--s1);border-top:1px solid var(--br)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.step{background:rgba(255,255,255,.03);border:1px solid var(--br);border-radius:8px;padding:1.5rem 1.25rem;position:relative;transition:all .25s}
+.step:hover{border-color:rgba(13,107,110,.3);background:rgba(13,107,110,.05);transform:translateY(-2px)}
+.step-n{font-family:var(--fh);font-size:2rem;font-weight:800;color:rgba(13,107,110,.3);line-height:1;margin-bottom:.75rem}
+.step h3{font-family:var(--fh);font-size:.95rem;font-weight:700;color:var(--w);margin-bottom:.4rem}
+.step p{font-size:.75rem;color:var(--m);line-height:1.7;font-weight:300}
+
+/* USE CASES */
+#use-cases{background:var(--bg);border-top:1px solid var(--br)}
+.uc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:2rem}
+.uc-card{background:var(--s1);border:1px solid var(--br);border-radius:8px;padding:1.5rem;transition:all .25s}
+.uc-card:hover{border-color:rgba(13,107,110,.3);transform:translateY(-2px)}
+.uc-icon{font-size:1.8rem;margin-bottom:.75rem}
+.uc-card h3{font-family:var(--fh);font-size:.92rem;font-weight:700;color:var(--w);margin-bottom:.4rem}
+.uc-card p{font-size:.75rem;color:var(--m);line-height:1.7;font-weight:300}
+.uc-tag{display:inline-block;margin-top:.75rem;font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .5rem;border-radius:20px;background:rgba(13,107,110,.15);color:var(--teal2);border:1px solid rgba(13,107,110,.25)}
+
+/* FEATURES */
+#features{background:var(--s2);border-top:1px solid var(--br)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.feat{display:flex;gap:.85rem;padding:1.1rem;background:rgba(255,255,255,.02);border:1px solid var(--br);border-radius:6px;transition:all .2s}
+.feat:hover{border-color:rgba(13,107,110,.25);background:rgba(13,107,110,.04)}
+.feat-ic{width:36px;height:36px;border-radius:8px;background:rgba(13,107,110,.2);border:1px solid rgba(13,107,110,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.feat h4{font-family:var(--fh);font-size:.82rem;font-weight:700;color:var(--w);margin-bottom:.2rem}
+.feat p{font-size:.7rem;color:var(--m);line-height:1.6;font-weight:300}
+
+/* INTEGRATION */
+#integration{background:var(--bg);border-top:1px solid var(--br)}
+.int-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2rem}
+.code-block{background:var(--s1);border:1px solid var(--bt);border-radius:8px;overflow:hidden}
+.cb-head{display:flex;align-items:center;justify-content:space-between;padding:.55rem .85rem;border-bottom:1px solid var(--br);background:rgba(255,255,255,.02)}
+.cb-head span{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal2)}
+.cb-dots{display:flex;gap:.3rem}
+.cb-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15)}
+pre{padding:1rem;font-size:.7rem;line-height:1.75;color:rgba(255,255,255,.7);overflow-x:auto;font-family:'Courier New',monospace}
+.kw{color:var(--teal2)} .str{color:var(--gold)} .cm{color:rgba(255,255,255,.35)}
+.int-right h3{font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--w);margin-bottom:.65rem;line-height:1.3}
+.int-right p{font-size:.8rem;color:var(--m);line-height:1.75;margin-bottom:1rem;font-weight:300}
+.int-steps{display:flex;flex-direction:column;gap:.5rem}
+.is{display:flex;align-items:flex-start;gap:.65rem;font-size:.75rem;color:var(--m)}
+.is-n{width:22px;height:22px;border-radius:50%;background:rgba(13,107,110,.2);border:1px solid rgba(13,107,110,.3);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:.65rem;font-weight:700;color:var(--teal2);flex-shrink:0}
+
+/* CTA */
+#cta{background:linear-gradient(135deg,var(--teal3),var(--bg));border-top:1px solid var(--bt);text-align:center;padding:5rem 0}
+#cta h2{margin-bottom:.75rem}
+#cta p{font-size:.9rem;color:var(--m);max-width:480px;margin:0 auto 2rem;font-weight:300;line-height:1.8}
+.cta-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--s1);border-top:1px solid var(--br);padding:2rem 0 1.5rem}
+.fi{max-width:var(--mx);margin:0 auto;padding:0 1.25rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;margin-bottom:1.4rem}
+.fn{font-family:var(--fh);font-size:.88rem;font-weight:800;color:var(--w);margin-bottom:.15rem}
+.ft{font-size:.5rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.55rem}
+footer p{font-size:.68rem;color:var(--d);line-height:1.65;max-width:200px}
+.fc h5{font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:.28rem}
+.fc ul li a{font-size:.68rem;color:var(--d);transition:color .2s}
+.fc ul li a:hover{color:rgba(255,255,255,.65)}
+.fb{max-width:var(--mx);margin:0 auto;padding:.8rem 1.25rem 0;border-top:1px solid var(--br);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.fb p{font-size:.58rem;color:rgba(255,255,255,.17);margin:0}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.rv.in{opacity:1;transform:translateY(0)}
+
+.mob{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,16,26,.98);flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
+.mob.open{display:flex}
+.mob a{font-family:var(--fh);font-size:1.4rem;font-weight:800;color:var(--w)}
+.mob a:hover{color:var(--gold)}
+
+@media(max-width:860px){
+  #hero{grid-template-columns:1fr;min-height:auto;padding:4rem 0 2rem}
+  .hright{display:none}
+  .steps{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+  .int-grid{grid-template-columns:1fr}
+  .fi{grid-template-columns:1fr 1fr}
+  .nl{display:none}.hb{display:flex}
+}
+@media(max-width:520px){.fi{grid-template-columns:1fr}.uc-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="ni">
+    <a href="#" class="nb">
+      <div class="nm">AI</div>
+      <div><span class="nn">Lives In Motion AI</span><span class="ns">Intelligent Receptionists</span></div>
+    </a>
+    <div class="nr">
+      <a href="#how" class="nl">How it works</a>
+      <a href="#use-cases" class="nl">Use cases</a>
+      <a href="#integration" class="nl">Integration</a>
+      <a href="https://livesinmotion.co.uk" class="nl" target="_blank">Lives In Motion</a>
+      <button class="ncta" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Try Demo</button>
+      <button class="hb" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="#how" onclick="document.getElementById('mob').classList.remove('open')">How it works</a>
+  <a href="#use-cases" onclick="document.getElementById('mob').classList.remove('open')">Use cases</a>
+  <a href="#integration" onclick="document.getElementById('mob').classList.remove('open')">Integration</a>
+  <a href="https://livesinmotion.co.uk" target="_blank">Lives In Motion</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" style="padding-top:5rem;padding-bottom:4rem">
+  <div class="ho ho1"></div><div class="ho ho2"></div>
+  <div class="hgrid"></div>
+  <div class="w" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1">
+    <div class="hleft">
+      <div class="htag"><div class="tdot"></div>AI-Powered · Always Available · Always Professional</div>
+      <h1>Your <span class="t">intelligent</span><br>receptionist.<br><span class="g">Always on.</span></h1>
+      <p class="hs">Deploy a holographic AI receptionist for your care home, GP surgery, or community service in minutes. Available 24/7, fully on-brand, and connected to a single secure backend.</p>
+      <div class="hbtns">
+        <button class="btn-teal" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">🤖 Try Live Demo</button>
+        <a href="#integration" class="btn-out">See How to Integrate →</a>
+      </div>
+    </div>
+    <div class="hright" id="demo">
+      <div class="demo-frame">
+        <div class="df-top">
+          <div class="nm" style="width:26px;height:26px;border-radius:6px;font-size:.65rem">AI</div>
+          <div>
+            <div style="font-family:var(--fh);font-size:.8rem;font-weight:700;color:var(--w)" id="demoOrgName">Sunrise Care Home</div>
+            <div style="font-size:.52rem;color:var(--m)">AI Reception — Powered by Lives In Motion</div>
+          </div>
+          <div class="df-status"><div class="df-dot"></div>Online</div>
+        </div>
+        <!-- Hologram -->
+        <div class="holo-wrap">
+          <div class="holo-fig" id="holoFig">
+            <div class="holo-ring"></div>
+            <div class="holo-ring"></div>
+            <div class="scan-line"></div>
+            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100" height="120">
+              <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#12898D"/><stop offset="70%" stop-color="#0D6B6E"/><stop offset="100%" stop-color="#084F52" stop-opacity=".3"/></linearGradient>
+                <radialGradient id="hg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#12898D" stop-opacity=".35"/><stop offset="100%" stop-color="#0D6B6E" stop-opacity="0"/></radialGradient>
+                <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+              <ellipse cx="50" cy="60" rx="30" ry="48" fill="url(#hg)" opacity=".5"/>
+              <path d="M20 30Q18 18 24 10Q32 2 50 2Q68 2 76 10Q82 18 80 30" fill="#084F52" stroke="#12898D" stroke-width=".6"/>
+              <ellipse cx="50" cy="30" rx="20" ry="24" fill="#0D6B6E" stroke="#12898D" stroke-width=".6" filter="url(#glow)"/>
+              <path d="M32 52Q28 65 28 82Q30 80 36 78Q42 90 50 90Q58 90 64 78Q70 80 72 82Q72 65 68 52Q62 44 50 42Q38 44 32 52Z" fill="url(#bg)" stroke="#12898D" stroke-width=".5" opacity=".95"/>
+              <path d="M32 55Q22 63 21 74" fill="none" stroke="#12898D" stroke-width=".5" opacity=".7"/>
+              <path d="M68 55Q78 63 79 74" fill="none" stroke="#12898D" stroke-width=".5" opacity=".7"/>
+              <path d="M38 23Q42 21 50 21Q58 21 62 23" fill="none" stroke="#12898D" stroke-width=".7" opacity=".5"/>
+              <ellipse cx="42" cy="28" rx="3.5" ry="3" fill="#D4A832" opacity=".9"/>
+              <ellipse cx="58" cy="28" rx="3.5" ry="3" fill="#D4A832" opacity=".9"/>
+              <circle cx="42" cy="28" r="1.4" fill="white" opacity=".35"/>
+              <circle cx="58" cy="28" r="1.4" fill="white" opacity=".35"/>
+              <path d="M47 33Q50 35.5 53 33" fill="none" stroke="#12898D" stroke-width=".8" stroke-linecap="round" opacity=".6"/>
+              <path d="M42 39Q50 42 58 39" fill="none" stroke="#D4A832" stroke-width=".8" opacity=".7"/>
+              <path id="mouth" d="M44 38Q50 41 56 38" fill="none" stroke="#D4A832" stroke-width="1.2" stroke-linecap="round" opacity=".85"/>
+              <path d="M33 62L35 69L38 66L40 72" fill="none" stroke="#D4A832" stroke-width=".4" opacity=".4"/>
+              <circle cx="50" cy="58" r="1.8" fill="#D4A832" opacity=".5"/>
+              <rect x="26" y="80" width="48" height="14" fill="url(#bg)" opacity=".2"/>
+            </svg>
+          </div>
+          <div class="holo-base"></div>
+          <div style="text-align:center">
+            <div class="rec-name" id="recName">Ava</div>
+            <div class="rec-org" id="recOrg">Sunrise Care Home · AI Receptionist</div>
+            <div class="rec-status" style="justify-content:center;margin-top:.3rem">
+              <div class="rs-dot"></div>
+              <span id="recStatusTxt">Ready to help</span>
+            </div>
+          </div>
+          <div class="vbars" id="vbars"><div class="vb"></div><div class="vb"></div><div class="vb"></div><div class="vb"></div><div class="vb"></div></div>
+        </div>
+        <!-- Chat -->
+        <div class="chat-area" id="chatArea">
+          <div class="msg rec">
+            <div class="mav">A</div>
+            <div class="mb">Hello! I'm Ava, the AI receptionist for Sunrise Care Home. How can I help you today? I can answer questions about visiting, our services, or connect you with the right team.</div>
+          </div>
+        </div>
+        <div class="typing" id="typing">
+          <div class="mav" style="background:linear-gradient(135deg,#084F52,#0D6B6E);color:#D4A832;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0">A</div>
+          <div class="tdots"><div class="td"></div><div class="td"></div><div class="td"></div></div>
+        </div>
+        <!-- Customiser -->
+        <div class="customiser">
+          <div class="cust-label">✨ Customise this demo</div>
+          <div class="cust-row">
+            <input class="ci" id="custName" placeholder="Receptionist name" value="Ava">
+            <input class="ci" id="custOrg" placeholder="Organisation name" value="Sunrise Care Home">
+            <button class="cust-btn" onclick="applyCustom()">Apply</button>
+          </div>
+        </div>
+        <!-- Input -->
+        <div class="df-input">
+          <input class="di" id="chatInput" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <button class="mic-btn" id="micBtn" title="Voice input" onclick="toggleMic()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </button>
+          <button class="send-btn" id="sendBtn" onclick="sendMsg()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="w">
+    <div class="sl slt rv">⚙️ How it works</div>
+    <h2 class="rv">Up and running in three steps</h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-n">01</div>
+        <h3>Configure your receptionist</h3>
+        <p>Name your AI, define your organisation, set its knowledge base — visiting hours, services, contacts, FAQs — and choose its personality. Takes minutes, no technical knowledge needed.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-n">02</div>
+        <h3>Embed on your website</h3>
+        <p>Add a single script tag to your website. The holographic receptionist appears as a floating widget, ready to engage every visitor. Works on any website, any platform.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-n">03</div>
+        <h3>It handles the rest</h3>
+        <p>Your receptionist answers questions 24/7, speaks aloud using voice synthesis, accepts voice input, and escalates complex queries to your team via WhatsApp or email. Fully automated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="use-cases">
+  <div class="w">
+    <div class="sl slg rv">🏥 Use cases</div>
+    <h2 class="rv">Built for care. Designed for people.</h2>
+    <p class="rv" style="font-size:.85rem;color:var(--m);max-width:500px;margin-top:.3rem;font-weight:300;line-height:1.8">Every organisation that serves the public deserves a receptionist that never sleeps, never gets flustered, and always represents you at your best.</p>
+    <div class="uc-grid">
+      <div class="uc-card rv">
+        <div class="uc-icon">🏠</div>
+        <h3>Care Homes</h3>
+        <p>Answer family queries about visiting, care plans, and activities. Provide reassurance 24/7. Never miss a call from a worried relative again.</p>
+        <span class="uc-tag">Residential Care</span>
+      </div>
+      <div class="uc-card rv">
+        <div class="uc-icon">🩺</div>
+        <h3>GP Surgeries</h3>
+        <p>Handle appointment queries, signpost urgent care, provide opening hours and pharmacy information. Reduce call volume and front-desk pressure significantly.</p>
+        <span class="uc-tag">Primary Care</span>
+      </div>
+      <div class="uc-card rv">
+        <div class="uc-icon">🤝</div>
+        <h3>Community Services</h3>
+        <p>Guide service users to the right support, provide information about programmes and referrals, and ensure no one falls through the cracks after hours.</p>
+        <span class="uc-tag">Community & Charity</span>
+      </div>
+      <div class="uc-card rv">
+        <div class="uc-icon">💊</div>
+        <h3>Pharmacies</h3>
+        <p>Answer medication queries, provide opening hours, handle prescription collection questions, and signpost emergency services when appropriate.</p>
+        <span class="uc-tag">Community Pharmacy</span>
+      </div>
+      <div class="uc-card rv">
+        <div class="uc-icon">🏥</div>
+        <h3>Clinics & Specialists</h3>
+        <p>Manage appointment queries, pre-appointment information, and referral pathways. Available to patients when your admin team is not.</p>
+        <span class="uc-tag">Outpatient Services</span>
+      </div>
+      <div class="uc-card rv">
+        <div class="uc-icon">🌍</div>
+        <h3>Diaspora Health Services</h3>
+        <p>Culturally aware AI receptionists for health organisations serving the Nigerian and African diaspora — integrated with the wider Lives In Motion ecosystem.</p>
+        <span class="uc-tag">Diaspora & Global Health</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="w">
+    <div class="sl slt rv">✨ Features</div>
+    <h2 class="rv">Everything your receptionist needs</h2>
+    <div class="feat-grid" style="margin-top:1.75rem">
+      <div class="feat rv"><div class="feat-ic">🎙️</div><div><h4>Voice In & Out</h4><p>Visitors can speak to your receptionist and hear responses aloud — using built-in browser speech APIs at zero additional cost.</p></div></div>
+      <div class="feat rv"><div class="feat-ic">🌐</div><div><h4>24/7 Availability</h4><p>Your AI receptionist never sleeps, takes leave, or has a bad day. Always responsive, always professional, always on brand.</p></div></div>
+      <div class="feat rv"><div class="feat-ic">🎨</div><div><h4>Fully Customisable</h4><p>Name, personality, knowledge base, and appearance — all configurable. Your receptionist, your brand, your voice.</p></div></div>
+      <div class="feat rv"><div class="feat-ic">🔗</div><div><h4>Single Shared Backend</h4><p>All receptionists you deploy connect to one secure API gateway — one key, one deployment, zero duplication.</p></div></div>
+      <div class="feat rv"><div class="feat-ic">📲</div><div><h4>WhatsApp Escalation</h4><p>Complex queries are forwarded to your team via WhatsApp automatically — so nothing urgent falls through the cracks.</p></div></div>
+      <div class="feat rv"><div class="feat-ic">💷</div><div><h4>Affordable</h4><p>No per-seat licensing. No expensive integrations. Pay only for the AI calls you use — far less than a single hour of agency staff.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATION -->
+<section id="integration">
+  <div class="w">
+    <div class="sl slgr rv">🔧 Integration</div>
+    <h2 class="rv">One script tag. Any website.</h2>
+    <div class="int-grid">
+      <div class="code-block rv">
+        <div class="cb-head"><div class="cb-dots"><div class="cb-dot"></div><div class="cb-dot"></div><div class="cb-dot"></div></div><span>HTML — embed snippet</span></div>
+        <pre><span class="cm">&lt;!-- Add to your website's &lt;/body&gt; tag --&gt;</span>
+<span class="kw">&lt;script</span>
+  <span class="str">src</span>=<span class="str">"https://ai.livesinmotion.co.uk/receptionist.js"</span>
+  <span class="str">data-name</span>=<span class="str">"Ava"</span>
+  <span class="str">data-org</span>=<span class="str">"Sunrise Care Home"</span>
+  <span class="str">data-type</span>=<span class="str">"care-home"</span>
+  <span class="str">data-whatsapp</span>=<span class="str">"+447911123456"</span>
+<span class="kw">&gt;&lt;/script&gt;</span></pre>
+      </div>
+      <div class="int-right rv">
+        <h3>Embed on any website in under 5 minutes</h3>
+        <p>No developer required. No complex setup. Just add a single script tag to your existing website and your AI receptionist appears instantly — fully configured and ready to engage visitors.</p>
+        <div class="int-steps">
+          <div class="is"><div class="is-n">1</div><span>Contact us to set up your receptionist profile and knowledge base</span></div>
+          <div class="is"><div class="is-n">2</div><span>Receive your personalised embed snippet by email</span></div>
+          <div class="is"><div class="is-n">3</div><span>Paste it into your website — or ask your web team to add it</span></div>
+          <div class="is"><div class="is-n">4</div><span>Your receptionist is live, tested, and ready for visitors</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="w">
+    <div class="sl slt rv" style="justify-content:center">🚀 Get started</div>
+    <h2 class="rv">Ready to transform your reception?</h2>
+    <p class="rv">Join the care providers already using Lives In Motion AI to deliver better first impressions, reduce admin pressure, and serve patients and families 24/7.</p>
+    <div class="cta-btns rv">
+      <a href="mailto:hello@livesinmotion.co.uk?subject=AI Receptionist Enquiry" class="btn-teal">📧 Get in Touch</a>
+      <a href="https://livesinmotion.co.uk#contact" target="_blank" class="btn-out">Learn About Lives In Motion →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div><div class="fn">Lives In Motion AI</div><div class="ft">Intelligent Receptionists</div><p>AI-powered receptionists for care homes, GP surgeries and community services. Always available. Always professional.</p></div>
+    <div class="fc"><h5>Product</h5><ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#use-cases">Use cases</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#integration">Integration</a></li>
+    </ul></div>
+    <div class="fc"><h5>Lives In Motion</h5><ul>
+      <li><a href="https://livesinmotion.co.uk" target="_blank">Parent Company</a></li>
+      <li><a href="https://easylink-ui.vercel.app/" target="_blank">Amara Health AI</a></li>
+      <li><a href="https://diasporainmotion.com" target="_blank">Diaspora In Motion</a></li>
+      <li><a href="mailto:hello@livesinmotion.co.uk">hello@livesinmotion.co.uk</a></li>
+    </ul></div>
+  </div>
+  <div class="fb"><p>© 2026 Lives In Motion Ltd · Registered in England & Wales</p><p>AI Receptionists · Powered by Anthropic Claude</p></div>
+</footer>
+
+<script>
+// ── SHARED API ENDPOINT ───────────────────────────────────────
+// All assistants across the ecosystem call this single gateway
+const API = 'https://api.livesinmotion.co.uk';
+
+// ── DEMO STATE ────────────────────────────────────────────────
+let history = [];
+let loading = false;
+let recName = 'Ava';
+let recOrg = 'Sunrise Care Home';
+let recognition = null;
+let listening = false;
+let mouthAnim = null;
+
+// ── SYSTEM PROMPT FACTORY ─────────────────────────────────────
+// This is the template — each deployed receptionist gets its own version
+function buildSystem(name, org, type='care-home') {
+  const contexts = {
+    'care-home': `You are ${name}, the AI receptionist for ${org}, a residential care home. You help families and visitors with: visiting hours and booking, information about care services and activities, contacting the care team, general enquiries about the home. Be warm, reassuring, and professional. Many callers are worried family members — be especially empathetic. Always recommend contacting the care team directly for clinical matters or urgent concerns. For emergencies always direct to 999.`,
+    'gp': `You are ${name}, the AI receptionist for ${org}, a GP surgery. You help patients with: appointment queries, opening hours, prescription requests, signposting to appropriate services (urgent care, pharmacy, 111). Never give medical advice. Always direct urgent clinical concerns to 111 or 999. Be clear, professional, and calm.`,
+    'community': `You are ${name}, the AI receptionist for ${org}, a community service. You help service users and members of the public with: information about available services, how to access support, referral pathways, and opening times. Be warm, inclusive, and accessible. Signpost to emergency services for urgent needs.`
+  };
+  return contexts[type] || contexts['care-home'];
+}
+
+// ── SEND MESSAGE ──────────────────────────────────────────────
+async function sendMsg() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text || loading) return;
+  input.value = '';
+  addMsg('usr', text, 'You');
+  history.push({ role: 'user', content: text });
+  setLoading(true);
+  try {
+    const res = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: buildSystem(recName, recOrg),
+        messages: history
+      })
+    });
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || "I'm sorry, I couldn't process that. Please try again.";
+    history.push({ role: 'assistant', content: reply });
+    setLoading(false);
+    addMsg('rec', reply, recName[0]);
+    speak(reply);
+  } catch {
+    setLoading(false);
+    const err = "I'm having trouble connecting right now. Please try again shortly.";
+    addMsg('rec', err, recName[0]);
+  }
+}
+
+function addMsg(role, text, initial) {
+  const area = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  const av = document.createElement('div');
+  av.className = 'mav';
+  av.textContent = initial;
+  const mb = document.createElement('div');
+  mb.className = 'mb';
+  mb.textContent = text;
+  div.appendChild(av); div.appendChild(mb);
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function setLoading(v) {
+  loading = v;
+  document.getElementById('sendBtn').disabled = v;
+  document.getElementById('typing').classList.toggle('active', v);
+  const vb = document.getElementById('vbars');
+  const fig = document.getElementById('holoFig');
+  const st = document.getElementById('recStatusTxt');
+  if (v) {
+    vb.classList.add('speaking'); fig.classList.add('speaking');
+    st.textContent = 'Thinking...';
+  } else if (!listening) {
+    vb.classList.remove('speaking','listening'); fig.classList.remove('speaking','listening');
+    st.textContent = 'Ready to help';
+  }
+  document.getElementById('chatArea').scrollTop = 9999;
+}
+
+// ── VOICE SYNTHESIS ───────────────────────────────────────────
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const clean = text.replace(/[\u{1F300}-\u{1FFFF}]|[\u2600-\u27FF]/gu,'').replace(/\s+/g,' ').trim();
+  const utt = new SpeechSynthesisUtterance(clean);
+  utt.rate = 1.0; utt.pitch = 1.05; utt.volume = 0.9;
+  const voices = window.speechSynthesis.getVoices();
+  const pref = voices.find(v => /female|samantha|karen|victoria|zira|google uk english female/i.test(v.name));
+  if (pref) utt.voice = pref;
+  utt.onstart = () => {
+    document.getElementById('vbars').classList.add('speaking');
+    document.getElementById('holoFig').classList.add('speaking');
+    document.getElementById('recStatusTxt').textContent = 'Speaking...';
+    animateMouth(true);
+  };
+  utt.onend = utt.onerror = () => {
+    document.getElementById('vbars').classList.remove('speaking');
+    document.getElementById('holoFig').classList.remove('speaking');
+    document.getElementById('recStatusTxt').textContent = 'Ready to help';
+    animateMouth(false);
+  };
+  window.speechSynthesis.speak(utt);
+}
+
+function animateMouth(active) {
+  clearInterval(mouthAnim);
+  const m = document.getElementById('mouth');
+  if (!m) return;
+  if (active) {
+    const paths = ['M44 38Q50 41 56 38','M44 37Q50 40 56 37','M44 36Q50 39 56 36','M44 38Q50 42 56 38','M44 37.5Q50 41 56 37.5'];
+    let i = 0;
+    mouthAnim = setInterval(() => { m.setAttribute('d', paths[i++ % paths.length]); }, 110);
+  } else {
+    m.setAttribute('d', 'M44 38Q50 41 56 38');
+  }
+}
+
+// ── VOICE RECOGNITION ─────────────────────────────────────────
+function toggleMic() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { addMsg('rec', "Voice input isn't supported in this browser. Please type your message.", recName[0]); return; }
+  if (!recognition) {
+    recognition = new SR();
+    recognition.continuous = false; recognition.interimResults = false; recognition.lang = 'en-GB';
+    recognition.onstart = () => {
+      listening = true;
+      document.getElementById('micBtn').classList.add('listening');
+      document.getElementById('holoFig').classList.add('listening');
+      document.getElementById('vbars').classList.add('listening');
+      document.getElementById('recStatusTxt').textContent = 'Listening...';
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+    };
+    recognition.onresult = e => {
+      document.getElementById('chatInput').value = e.results[0][0].transcript;
+      sendMsg();
+    };
+    recognition.onend = recognition.onerror = () => {
+      listening = false;
+      document.getElementById('micBtn').classList.remove('listening');
+      document.getElementById('holoFig').classList.remove('listening');
+      document.getElementById('vbars').classList.remove('listening');
+      document.getElementById('recStatusTxt').textContent = 'Ready to help';
+    };
+  }
+  if (listening) recognition.stop();
+  else recognition.start();
+}
+
+// ── CUSTOMISER ────────────────────────────────────────────────
+function applyCustom() {
+  const name = document.getElementById('custName').value.trim() || 'Ava';
+  const org = document.getElementById('custOrg').value.trim() || 'Sunrise Care Home';
+  recName = name; recOrg = org;
+  document.getElementById('recName').textContent = name;
+  document.getElementById('recOrg').textContent = org + ' · AI Receptionist';
+  document.getElementById('demoOrgName').textContent = org;
+  history = [];
+  const area = document.getElementById('chatArea');
+  area.innerHTML = '';
+  addMsg('rec', `Hello! I'm ${name}, the AI receptionist for ${org}. How can I help you today?`, name[0]);
+  if (window.speechSynthesis) window.speechSynthesis.cancel();
+}
+
+// ── REVEAL ────────────────────────────────────────────────────
+const obs = new IntersectionObserver(es => {
+  es.forEach((e,i) => { if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*60);obs.unobserve(e.target);} });
+}, {threshold:.08});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+// Warm up voices
+if (window.speechSynthesis) window.speechSynthesis.getVoices();
+</script>
+</body>
+</html>
